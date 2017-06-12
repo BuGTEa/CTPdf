@@ -19,7 +19,7 @@ public:
 
 	void Login(char * Broker_Id, char * User_Id, char * password);
 
-	void AskPrice(char * InsId[]);
+	void AskPrice();
 
 	void OnRtnDepthMarketData(CThostFtdcDepthMarketDataField *pDepthMarketData);
 
@@ -34,4 +34,6 @@ private:
 	char * Broker_Id;
 	char * password;
 	vector <float> price;
+	char * InsId[1] = { "cu1707" };
+	int TryTime = 5;
 };

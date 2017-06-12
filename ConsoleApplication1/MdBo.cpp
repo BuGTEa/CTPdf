@@ -57,9 +57,9 @@ void MdBo::Login(char *Broker_Id, char *User_Id, char * password)
 	}
 }
 
-void MdBo::AskPrice(char * InsId[])
+void MdBo::AskPrice()
 {
-	int ret = (this->mApi->SubscribeMarketData(InsId, 1));
+	int ret = (this->mApi->SubscribeMarketData(this->InsId, 1));
 	if (ret == 0)
 	{
 		cout << "行情订阅成功！" << endl;
@@ -67,6 +67,12 @@ void MdBo::AskPrice(char * InsId[])
 	else
 	{
 		cout << "行情订阅超时！" << endl;
+		while (this->TryTime > 0) 
+		{
+			this->TryTime -= 1;
+			MdBo::AskPrice();
+		}
+
 	}
 }
 

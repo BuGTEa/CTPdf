@@ -43,7 +43,9 @@ void main()
 	///登陆到服务器
 	pSpi->Login((char*)broker_id.c_str(), (char *)investor_id.c_str(), (char *)password.c_str());
 	mSpi->Login((char*)broker_id.c_str(), (char *)user_id.c_str(), (char *)password.c_str());
-	
+
+	///询价
+	mSpi->AskPrice();
 	cout << "正在获取行情，需要三十秒的缓冲，请稍后..." << endl;
 	Sleep(300000);
 	
